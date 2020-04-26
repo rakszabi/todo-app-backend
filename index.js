@@ -21,6 +21,10 @@ app.use(bodyParser.urlencoded({ extended: false }));
 // parse application/json
 app.use(bodyParser.json());
 
+app.get('/', (req, res) => {
+    res.send('Hello World');
+})
+
 // Route Files
 let todos = require('./routes/todos');
 app.use('/todos', todos);
