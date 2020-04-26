@@ -21,7 +21,6 @@ app.use(bodyParser.urlencoded({ extended: false }));
 // parse application/json
 app.use(bodyParser.json());
 
-
 // Route Files
 let todos = require('./routes/todos');
 app.use('/todos', todos);
