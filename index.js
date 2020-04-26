@@ -1,0 +1,33 @@
+const express = require('express');
+const app = express();
+const mongoose = require('mongoose');
+const bodyParser = require('body-parser');
+const config = require('./config/database');
+
+mongoose.connect(config.database);
+let db = mongoose.connection;
+
+db.once('open', () => {
+    console.log('Connected to MongoDB');
+});
+
+db.on('error', (err) => {
+    console.log(err);
+});
+
+//let Todo = require('./models/todo');
+
+// Body Parser Middleware
+// parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: false }));
+// parse application/json
+app.use(bodyParser.json());
+
+
+// Route Files
+let todos = require('./routes/todos');
+app.use('/todos', todos);
+
+app.listen(3000, () => {
+    console.log('Server started on port 3000...');
+});
