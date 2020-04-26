@@ -15,8 +15,6 @@ db.on('error', (err) => {
     console.log(err);
 });
 
-//let Todo = require('./models/todo');
-
 // Body Parser Middleware
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }));
